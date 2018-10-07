@@ -1,24 +1,24 @@
 
 const calculate = (n1, operator, n2) => {
-  const firstNum = parseFloat(n1)
-  const secondNum = parseFloat(n2)
-  if (operator === 'add') return firstNum + secondNum
-  if (operator === 'subtract') return firstNum - secondNum
-  if (operator === 'multiply') return firstNum * secondNum
-  if (operator === 'divide') return firstNum / secondNum
+  const firstNum = parseFloat(n1); // Number 1
+  const secondNum = parseFloat(n2); // Number 2
+  if (operator === 'add') return firstNum + secondNum; // Add Both Numbers
+  if (operator === 'subtract') return firstNum - secondNum; // Subtract Both Numbers
+  if (operator === 'multiply') return firstNum * secondNum; // Multiply Both Numbers
+  if (operator === 'divide') return firstNum / secondNum; // Divide Both Numbers
 }
 
-const getKeyType = key => {
-  const { action } = key.dataset
-  if (!action) return 'number'
+const getKeyType = key => { // Check The Key Type
+  const { action } = key.dataset;
+  if (!action) return 'number'; // If Doesnt Include A data-action On The HTML Element Set Key Type As A Number (0-9)
   if (
-    action === 'add' ||
-    action === 'subtract' ||
-    action === 'multiply' ||
-    action === 'divide'
-  ) return 'operator'
+    action === 'add' || // data-action = "add"
+    action === 'subtract' ||  // data-action = "subtract"
+    action === 'multiply' ||  // data-action = "multiply"
+    action === 'divide'  // data-action = "divide"
+  ) return 'operator';
   // For everything else, return the action
-  return action
+  return action;
 }
 
 const createResultString = (key, displayedNum, state) => {
@@ -116,13 +116,13 @@ const calculator = document.querySelector('.calculator')
 const display = calculator.querySelector('.calculator__display')
 const keys = calculator.querySelector('.calculator__keys')
 
-keys.addEventListener('click', e => {
-  if (!e.target.matches('button')) return
-  const key = e.target
-  const displayedNum = display.textContent
-  const resultString = createResultString(key, displayedNum, calculator.dataset)
+keys.addEventListener('click', e => { // Checks If Clicked Key
+  if (!e.target.matches('button')) return;
+  const key = e.target;
+  const displayedNum = display.textContent;
+  const resultString = createResultString(key, displayedNum, calculator.dataset);
 
-  display.textContent = resultString
-  updateCalculatorState(key, calculator, resultString, displayedNum)
-  updateVisualState(key, calculator)
+  display.textContent = resultString;
+  updateCalculatorState(key, calculator, resultString, displayedNum);
+  updateVisualState(key, calculator);
 })
