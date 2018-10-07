@@ -39,13 +39,13 @@ const createResultString = (key, displayedNum, state) => {
       : displayedNum + keyContent
   }
 
-  if (keyType === 'decimal') {
-    if (!displayedNum.includes('.')) return displayedNum + '.'
-    if (previousKeyType === 'operator' || previousKeyType === 'calculate') return '0.'
-    return displayedNum
+  if (keyType === 'decimal') { // Check If Pressed Key Is A Decimal
+    if (!displayedNum.includes('.')) return displayedNum + '.'; // If There Is Not Already A Decimal On The Display, Add A Decimal
+    if (previousKeyType === 'operator' || previousKeyType === 'calculate') return '0.'; // If The Previous Key Hit Was An Operator Or Equals Key And The User Hits The Decimal, Add A Zero + A Decimal To The Display
+    return displayedNum;
   }
 
-  if (keyType === 'operator') {
+  if (keyType === 'operator') { // If The Clicked Key Was An Operator
     return firstValue &&
       operator &&
       previousKeyType !== 'operator' &&
@@ -54,7 +54,7 @@ const createResultString = (key, displayedNum, state) => {
       : displayedNum
   }
 
-  if (keyType === 'clear') return 0
+  if (keyType === 'clear') return 0; // If The Key Pressed Was The AC / CE Button Then Return 0
 
   if (keyType === 'calculate') {
     return firstValue
@@ -112,9 +112,9 @@ const updateVisualState = (key, calculator) => {
   }
 }
 
-const calculator = document.querySelector('.calculator')
-const display = calculator.querySelector('.calculator__display')
-const keys = calculator.querySelector('.calculator__keys')
+const calculator = document.querySelector('.calculator');
+const display = calculator.querySelector('.calculator__display');
+const keys = calculator.querySelector('.calculator__keys');
 
 keys.addEventListener('click', e => { // Checks If Clicked Key
   if (!e.target.matches('button')) return;
