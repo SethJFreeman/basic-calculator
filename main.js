@@ -92,11 +92,11 @@ const updateCalculatorState = (key, calculator, calculatedValue, displayedNum) =
       : displayedNum
   }
 
-  if (keyType === 'clear' && key.textContent === 'AC') {
-    calculator.dataset.firstValue = ''
-    calculator.dataset.modValue = ''
-    calculator.dataset.operator = ''
-    calculator.dataset.previousKeyType = ''
+  if (keyType === 'clear' && key.textContent === 'AC') { // If AC Button Was Pressed Clear All History
+    calculator.dataset.firstValue = '';
+    calculator.dataset.modValue = '';
+    calculator.dataset.operator = '';
+    calculator.dataset.previousKeyType = '';
   }
 }
 
@@ -112,17 +112,17 @@ const updateVisualState = (key, calculator) => {
   }
 }
 
-const calculator = document.querySelector('.calculator');
-const display = calculator.querySelector('.calculator__display');
-const keys = calculator.querySelector('.calculator__keys');
+const calculator = document.querySelector('.calculator'); // Add Elements Into Variables
+const display = calculator.querySelector('.calculator__display');  // Add Elements Into Variables
+const keys = calculator.querySelector('.calculator__keys');  // Add Elements Into Variables
 
 keys.addEventListener('click', e => { // Checks If Clicked Key
   if (!e.target.matches('button')) return;
-  const key = e.target;
-  const displayedNum = display.textContent;
+  const key = e.target; // Set Target Key To A Variable
+  const displayedNum = display.textContent; // Get The Displayed Text
   const resultString = createResultString(key, displayedNum, calculator.dataset);
 
-  display.textContent = resultString;
-  updateCalculatorState(key, calculator, resultString, displayedNum);
-  updateVisualState(key, calculator);
+  display.textContent = resultString; //  The Displayed Text Is Equal To The Result String
+  updateCalculatorState(key, calculator, resultString, displayedNum); // call updateCalculatorState
+  updateVisualState(key, calculator); // call updateVisualState
 })
