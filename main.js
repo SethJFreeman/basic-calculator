@@ -66,7 +66,7 @@ const createResultString = (key, displayedNum, state) => {
 }
 
 const updateCalculatorState = (key, calculator, calculatedValue, displayedNum) => {
-  const keyType = getKeyType(key)
+  const keyType = getKeyType(key); // Get The Type Of Key
   const {
     firstValue,
     operator,
@@ -100,7 +100,7 @@ const updateCalculatorState = (key, calculator, calculatedValue, displayedNum) =
   }
 }
 
-const updateVisualState = (key, calculator) => {
+const updateVisualState = (key, calculator) => { // Changes the visuals of the calculator
   const keyType = getKeyType(key); // Call getKeyType(key) function to retain the type of key
   Array.from(key.parentNode.children).forEach(k => k.classList.remove('is-depressed'))
 
