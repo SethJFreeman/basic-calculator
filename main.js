@@ -101,14 +101,14 @@ const updateCalculatorState = (key, calculator, calculatedValue, displayedNum) =
 }
 
 const updateVisualState = (key, calculator) => {
-  const keyType = getKeyType(key)
+  const keyType = getKeyType(key); // Call getKeyType(key) function to retain the type of key
   Array.from(key.parentNode.children).forEach(k => k.classList.remove('is-depressed'))
 
-  if (keyType === 'operator') key.classList.add('is-depressed')
-  if (keyType === 'clear' && key.textContent !== 'AC') key.textContent = 'AC'
-  if (keyType !== 'clear') {
-    const clearButton = calculator.querySelector('[data-action=clear]')
-    clearButton.textContent = 'CE'
+  if (keyType === 'operator') key.classList.add('is-depressed'); // Make the background darker of an opperator button if it was pressed
+  if (keyType === 'clear' && key.textContent !== 'AC') key.textContent = 'AC'; // If the keytype is "clear" change the button text to AC
+  if (keyType !== 'clear') { // Also if the keytype is not clear...
+    const clearButton = calculator.querySelector('[data-action=clear]'); // Set the variable clearButton to the clear key
+    clearButton.textContent = 'CE'; // Change the text content to CE
   }
 }
 
