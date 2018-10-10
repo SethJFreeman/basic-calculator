@@ -76,8 +76,8 @@ const updateCalculatorState = (key, calculator, calculatedValue, displayedNum) =
 
   calculator.dataset.previousKeyType = keyType
 
-  if (keyType === 'operator') {
-    calculator.dataset.operator = key.dataset.action
+  if (keyType === 'operator') { //  If The Key Type Is An Operator
+    calculator.dataset.operator = key.dataset.action;
     calculator.dataset.firstValue = firstValue &&
       operator &&
       previousKeyType !== 'operator' &&
