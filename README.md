@@ -3,4 +3,4 @@
 
 ## Description
 
-A javascript project
+Created by following a web tutorial on javascript.
